@@ -6,6 +6,7 @@ using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine; 
 
+ 
 namespace LD.Editor
 {
     public static class PackageManagerUtility
@@ -24,6 +25,9 @@ namespace LD.Editor
                 while (retry > 0)
                 {
                     retry--; 
+                    var registires = await PackageManagerUtility.GetRegistries();
+
+                    var openupmRegistry = registires.FirstOrDefault(x => x.name == "openupm");
                     var add = Client.Add(version);
                     await UniTask.WaitUntil(() => add.IsCompleted); 
                     if (add.Error != null)
@@ -75,6 +79,18 @@ namespace LD.Editor
         public static string[] MergeScopes(string[] originScopes, string[] newOrAddtionalScopes)
         {
             return originScopes.Union(newOrAddtionalScopes).ToArray<string>();
+        }
+
+        /// <summary>
+        /// You can get already exist registries
+        /// </summary> 
+        public static async UniTask<string[]> GetScopes(string registryName)
+        {
+            var registires = await PackageManagerUtility.GetRegistries(); 
+            var registry = registires.FirstOrDefault(x => x.name == registryName);
+            var scopes = Getter<string[]>((registry.GetType(), "scopes", BindingFlags.Instance | BindingFlags.NonPublic), registires);
+            if (scopes == null) throw new Exception("GetScopes Cannot Found Scopes");
+            return scopes; 
         }
 
         /// <summary>
