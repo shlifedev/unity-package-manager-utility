@@ -1,19 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System; 
 using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using JetBrains.Annotations; 
-using UnityEditor;
+using System.Reflection; 
+using Cysharp.Threading.Tasks; 
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
-using UnityEngine;
-// require package com.unity.editorcoroutines
-using PackageInfo = UnityEditor.PackageManager.PackageInfo;
-using Progress = UnityEditor.Progress;
+using UnityEngine; 
 
 namespace LD.Editor
 {
@@ -216,42 +207,42 @@ namespace LD.Editor
             return methodInfo;
         }
 
-        private static Request<T> CallMethod<T>(string methodName, [CanBeNull] object instance, BindingFlags flags,
+        private static Request<T> CallMethod<T>(string methodName,  object instance, BindingFlags flags,
             params object[] parameters)
         {
             return Call<T>(GetMethod(methodName, flags), instance, parameters);
         }
 
-        private static Request<T> Call<T>(MethodInfo info, [CanBeNull] object instance, params object[] parameters)
+        private static Request<T> Call<T>(MethodInfo info,  object instance, params object[] parameters)
         {
             return info.Invoke(instance, parameters: parameters) as Request<T>;
         }
 
-        private static object CallMethod(string methodName, [CanBeNull] object instance, BindingFlags flags,
+        private static object CallMethod(string methodName, object instance, BindingFlags flags,
             params object[] parameters)
         {
             return Call(GetMethod(methodName, flags), instance, parameters);
         }
 
-        private static object Call(MethodInfo info, [CanBeNull] object instance, params object[] parameters)
+        private static object Call(MethodInfo info,  object instance, params object[] parameters)
         {
             return info.Invoke(instance, parameters: parameters);
         }
 
-        private static T Getter<T>(PropertyInfo info, [CanBeNull] object instance, params object[] parameters)
+        private static T Getter<T>(PropertyInfo info, object instance, params object[] parameters)
         {
             return (T)info.GetValue(instance, parameters);
         }
 
         private static T Getter<T>((Type type, string propertyName, BindingFlags flags) propertyData,
-            [CanBeNull] object instance, params object[] parameters)
+           object instance, params object[] parameters)
         {
             var property = propertyData.type.GetProperty(propertyData.propertyName, propertyData.flags);
             return (T)property?.GetValue(instance, parameters);
         }
 
         private static object Getter((Type type, string propertyName, BindingFlags flags) propertyData,
-            [CanBeNull] object instance, params object[] parameters)
+            object instance, params object[] parameters)
         {
             var property = propertyData.type.GetProperty(propertyData.propertyName, propertyData.flags);
             return property?.GetValue(instance, parameters);
