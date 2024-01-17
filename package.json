@@ -1,0 +1,16 @@
+{
+  "name": "com.shlifedev.dependencies",
+  "displayName": "LD.PackageDependencies",
+  "author": {
+    "name": "shlifedev"
+  },
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "Hook Unity Editor Client.cs",
+  "license": "MIT",
+  "category": "Package",
+  "dependencies": {
+    "com.unity.editorcoroutines": "1.0.0",
+    "com.cysharp.unitask": "2.5.0"
+  }
+}
