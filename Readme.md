@@ -8,6 +8,9 @@ Therefore, I've written a hook for ScopedRegistry and will gradually update this
 
 But for now, it only provides the hooks API. 
 
+## Requirement
+- UniTask
+
 ## How to use
 You can easily access all APIs through the `PackageManagerUtility.cs` You will need to install `unitask`.
 ```csharp
