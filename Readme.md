@@ -1,4 +1,7 @@
 # PackageManagerUtility
+* [dev](https://github.com/shlifedev/unity-package-manager-utility/tree/dev)
+ In this branch, we've removed the UniTask-specific dependencies, so all you need to do is add the editorcoroutine to your package.json to use it. If you want UniTask functionality, add the `UNITASK` define to your buildsettings. 
+
 
 The Unity Engine automatically manages your package dependencies with package.json and manifest.json.
 
