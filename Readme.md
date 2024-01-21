@@ -1,4 +1,6 @@
 # PackageManagerUtility
+* [dev](https://github.com/shlifedev/unity-package-manager-utility/tree/dev) it's no unitask dependency branch. i will merge it.
+
 
 The Unity Engine automatically manages your package dependencies with package.json and manifest.json.
 
