@@ -10,7 +10,6 @@
   "license": "MIT",
   "category": "Package",
   "dependencies": {
-    "com.unity.editorcoroutines": "1.0.0",
-    "com.cysharp.unitask": "2.5.0"
+    "com.unity.editorcoroutines": "1.0.0"
   }
 }
