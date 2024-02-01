@@ -45,6 +45,8 @@ You can easily access all APIs through the `PackageManagerUtility.cs` You will n
             MissingDependency[] missingDependencies = await PackageManagerUtility.GetMissingDependency();
             foreach (var missing in missingDependencies)
             {
+
+             // but it's support only github or unity registry. if you need adding other package registry dependency then using UpdateScopedRegistry function.
                 await PackageManagerUtility.AddDependency(missing);
             }
             
